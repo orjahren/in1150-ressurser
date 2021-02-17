@@ -37,4 +37,4 @@ for(let i = 0; i < 1000000000; i++) {
 }
 
 console.log("VIDERESNEDER")
-//location.replace(target)
+location.replace(target)
