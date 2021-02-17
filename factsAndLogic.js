@@ -29,6 +29,8 @@ if(ukeNaa >= paskeUke) {
 const ukeMaal = ukeNaa-offset
 let target = concatUrl(urlArr, ukeMaal)
 
+
+
 const canvas = document.getElementsByTagName("canvas")[0]
 const ctx = canvas.getContext("2d");
 
@@ -43,19 +45,20 @@ const margin = 5;
 let faktor = canvas.width / s;
 
 let tegnProgress = () => {
-    ctx.fillStyle = 'rgb(' + ((i*faktor)) + ', '+ ((i*faktor))  + ',' + ((i*faktor)) + ')';
+    ctx.fillStyle = 'rgb(' + (i*faktor)  + ', '+ (i*faktor)  + ',' + i*faktor + ')';
     
     console.log((i*faktor) )
     ctx.fillRect(i * faktor, 0, s, s);
 
-    i++
 
-    if(i * faktor >= canvas.width) {
+    if(faktor * i > canvas.width) {
         document.body.style.backgroundColor = "black"
         document.getElementsByTagName("h1")[0].style.color = "white"
+        
         clearInterval(t)
         location.replace(target)
     }
+    i++
 }
 
 let t = setInterval(tegnProgress, 20);
