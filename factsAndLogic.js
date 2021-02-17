@@ -21,20 +21,41 @@ let offset = 2
 TODO
 
 const paskeUke = 13
-if(ukeNaa == paskeUke) {
+if(ukeNaa >= paskeUke) {
   offset++
 }
 */
 
-const ukeMaal = Number(ukeNaa-offset)
+const ukeMaal = ukeNaa-offset
 let target = concatUrl(urlArr, ukeMaal)
 
-console.log("\"Venter\"")
+const canvas = document.getElementsByTagName("canvas")[0]
+const ctx = canvas.getContext("2d");
 
-//bruk litt tid så det virker som at programmet faktisk gjør noe(lol)
-for(let i = 0; i < 1000000000; i++) {
+canvas.width = 440;
+canvas.height = 20;
+
+let s = canvas.height;
+
+let i = 0
+const margin = 5;
+
+let faktor = canvas.width / s;
+
+let tegnProgress = () => {
+    ctx.fillStyle = 'rgb(' + ((i*faktor)) + ', '+ ((i*faktor))  + ',' + ((i*faktor)) + ')';
     
+    console.log((i*faktor) )
+    ctx.fillRect(i * faktor, 0, s, s);
+
+    i++
+
+    if(i * faktor >= canvas.width) {
+        document.body.style.backgroundColor = "black"
+        document.getElementsByTagName("h1")[0].style.color = "white"
+        clearInterval(t)
+        location.replace(target)
+    }
 }
 
-console.log("VIDERESNEDER")
-location.replace(target)
+let t = setInterval(tegnProgress, 20);
