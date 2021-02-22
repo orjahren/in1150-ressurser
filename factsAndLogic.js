@@ -26,8 +26,19 @@ if(ukeNaa >= paskeUke) {
 }
 */
 
-const ukeMaal = ukeNaa-offset
-let target = concatUrl(urlArr, ukeMaal)
+let ukeMaal = ukeNaa-offset;
+
+//helg
+let d = new Date();
+if(d.getDay() == 0 || d.getDay() == 6) {
+  ukeMaal++; 
+}else if(d.getDay() == 5) {
+  if(d.getHours() > 16) { //antar ny oblig er ute innen kl 17
+      ukeMaal++;
+  }
+}
+
+let target = concatUrl(urlArr, ukeMaal);
 
 
 
