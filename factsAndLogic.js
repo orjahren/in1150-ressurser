@@ -16,15 +16,11 @@ const ukeNaa = getWeekNumber(new Date());
 let offset = 2
 
 //Påskeferie-edge-case
-/*
-
-TODO
-
 const paskeUke = 13
 if(ukeNaa >= paskeUke) {
-  offset++
+  offset += 2;
 }
-*/
+
 
 let ukeMaal = ukeNaa-offset;
 
